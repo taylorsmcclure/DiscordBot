@@ -117,6 +117,15 @@ var commands = {
             }
         }
     },
+		"honk": {
+				description: "unleash chen's rage",
+				process: function(bot, msg, suffix) {
+						bot.sendMessage(msg.channel, "HONK HONK HONK https://media.giphy.com/media/3oEduEnrFm7i6Zv0Na/giphy.gif");
+						if(suffix){
+								bot.sendMessage(msg.channel, "note that !honk takes no arguments!");
+						}
+				}
+		},
     "servers": {
         description: "lists servers bot is connected to",
         process: function(bot,msg){bot.sendMessage(msg.channel,bot.servers);}
@@ -349,7 +358,7 @@ var commands = {
                     //bot.sendMessage(msg.channel,JSON.stringify(snapshot));
                     bot.sendMessage(msg.channel,snapshot.name
                         + "\nprice: $" + snapshot.lastTradePriceOnly);
-                }  
+                }
             });
         }
     },
@@ -454,7 +463,7 @@ var commands = {
         process: function(bot,msg,suffix) {
             if (suffix.split("d").length <= 1) {
                 bot.sendMessage(msg.channel,msg.author + " rolled a " + d20.roll(suffix || "10"));
-            }  
+            }
             else if (suffix.split("d").length > 1) {
                 var eachDie = suffix.split("+");
                 var passing = 0;
@@ -655,7 +664,7 @@ bot.on("disconnected", function () {
 
 	console.log("Disconnected!");
 	process.exit(1); //exit node.js with an error
-	
+
 });
 
 bot.on("message", function (msg) {
@@ -715,13 +724,13 @@ bot.on("message", function (msg) {
         if(msg.author == bot.user){
             return;
         }
-        
+
         if (msg.author != bot.user && msg.isMentioned(bot.user)) {
                 bot.sendMessage(msg.channel,msg.author + ", you called?");
         }
     }
 });
- 
+
 
 //Log user status changes
 bot.on("presence", function(user,status,gameId) {
